@@ -1,0 +1,127 @@
+:root {
+  --tc-50:  #FBF0EC;
+  --tc-100: #F7E1D8;
+  --tc-200: #F0C5B5;
+  --tc-500: #DD613B;
+  --tc-600: #C4522E;
+  --tc-700: #B84D2F;
+  --tc-900: #5C2616;
+}
+
+.admin-shell {
+  display: flex;
+  min-height: 100vh;
+  background: #FAF6F4;
+}
+
+/* ── Sidebar ─────────────────────────────── */
+
+.sidebar {
+  width: 232px;
+  flex-shrink: 0;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-right: 1px solid var(--tc-100);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 12px;
+  overflow-y: auto;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--tc-500);
+  padding: 4px 10px 4px;
+  margin-bottom: 28px;
+  letter-spacing: -0.2px;
+}
+
+/* ── Nav items ───────────────────────────── */
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--tc-900);
+  text-decoration: none;
+  transition: background 0.12s, color 0.12s;
+  line-height: 1;
+}
+
+.nav-item:hover {
+  background: var(--tc-50);
+  color: var(--tc-500);
+}
+
+.nav-item.active {
+  background: var(--tc-500);
+  color: #fff;
+}
+
+.nav-item svg {
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+
+.nav-item.active svg,
+.nav-item:hover svg {
+  opacity: 1;
+}
+
+/* ── Sidebar footer / logout ─────────────── */
+
+.sidebar-footer {
+  padding-top: 12px;
+  border-top: 1px solid var(--tc-100);
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--tc-700);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.12s;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.logout-btn:hover {
+  background: var(--tc-50);
+}
+
+/* ── Main content ────────────────────────── */
+
+.main-content {
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
+  min-width: 0;
+}
