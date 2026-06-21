@@ -1,0 +1,231 @@
+.places-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Header ──────────────────────────────── */
+
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--tc-900);
+  margin: 0 0 2px;
+  letter-spacing: -0.3px;
+}
+
+.page-subtitle {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* ── Toolbar ─────────────────────────────── */
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  max-width: 360px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 12px 8px 34px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+
+.search-input:focus {
+  border-color: var(--tc-500);
+  box-shadow: 0 0 0 3px rgba(221, 97, 59, 0.1);
+}
+
+.cat-filter {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #374151;
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.12s;
+}
+
+.cat-filter:focus {
+  border-color: var(--tc-500);
+}
+
+/* ── Table ───────────────────────────────── */
+
+.table-wrapper {
+  background: #fff;
+  border: 1px solid var(--tc-100);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.places-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.places-table thead th {
+  background: #fafafa;
+  padding: 11px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid var(--tc-100);
+  white-space: nowrap;
+}
+
+.places-table tbody tr {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.1s;
+}
+
+.places-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.places-table tbody tr:hover {
+  background: var(--tc-50);
+}
+
+.places-table td {
+  padding: 12px 16px;
+  color: #374151;
+  vertical-align: middle;
+}
+
+/* ── Cells ───────────────────────────────── */
+
+.td-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.place-name {
+  font-weight: 500;
+  color: #111827;
+}
+
+.place-web {
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  transition: color 0.12s;
+  flex-shrink: 0;
+}
+
+.place-web:hover {
+  color: var(--tc-500);
+}
+
+.td-address {
+  max-width: 220px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #6b7280;
+}
+
+.td-phone {
+  white-space: nowrap;
+  color: #6b7280;
+}
+
+.no-data {
+  color: #d1d5db;
+}
+
+/* ── Rating ──────────────────────────────── */
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--tc-500);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.rating-total {
+  color: #9ca3af;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+/* ── Category badges ─────────────────────── */
+
+.badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.badge--gastro {
+  background: #FEF3C7;
+  color: #B45309;
+}
+
+.badge--hotel {
+  background: #DBEAFE;
+  color: #1D4ED8;
+}
+
+.badge--lugar {
+  background: #D1FAE5;
+  color: #065F46;
+}
+
+/* ── States ──────────────────────────────── */
+
+.state-msg {
+  font-size: 14px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.state-msg--error {
+  color: #ef4444;
+}

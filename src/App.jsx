@@ -4,6 +4,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import AdminLayout from './layouts/AdminLayout'
 import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
+import PlacesPage from './pages/PlacesPage'
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
             }
           >
             <Route index element={<DashboardPage />} />
+            <Route path="lugares" element={<PlacesPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
