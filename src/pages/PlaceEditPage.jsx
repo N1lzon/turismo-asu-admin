@@ -135,7 +135,7 @@ export default function PlaceEditPage() {
           {place.lat && place.lng && (
             <a
               className="btn-map"
-              href={`https://www.google.com/maps/place/${encodeURIComponent(place.name)}/@${place.lat},${place.lng},17z`}
+              href={`https://www.google.com/maps/search/${encodeURIComponent(place.name)}/@${place.lat},${place.lng},17z`}
               target="_blank"
               rel="noopener noreferrer"
             >
