@@ -28,6 +28,16 @@ function timeAgo(dateStr) {
   return `hace ${days}d`
 }
 
+function formatDate(dateStr) {
+  return new Date(dateStr).toLocaleString('es-PY', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+}
+
 function RepoCard({ owner, repo, label }) {
   const [commit, setCommit] = useState(null)
   const [error, setError] = useState(false)
@@ -70,8 +80,15 @@ function RepoCard({ owner, repo, label }) {
             <span className="commit-sha">{commit.sha}</span>
             <span className="commit-dot">·</span>
             <span>{commit.author}</span>
+          </div>
+          <div className="commit-date">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            {formatDate(commit.date)}
             <span className="commit-dot">·</span>
-            <span>{timeAgo(commit.date)}</span>
+            {timeAgo(commit.date)}
           </div>
         </>
       )}

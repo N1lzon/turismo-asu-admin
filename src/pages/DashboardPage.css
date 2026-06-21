@@ -243,6 +243,19 @@
   color: #6b7280;
 }
 
+.commit-date {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.commit-date svg {
+  flex-shrink: 0;
+  color: #d1d5db;
+}
+
 .commit-dot {
   color: #d1d5db;
 }
