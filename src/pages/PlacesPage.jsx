@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react'
 import { useAuth } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 import { fetchPlaces } from '../api/places'
 import './PlacesPage.css'
 
@@ -29,6 +30,7 @@ function StarRating({ rating, total }) {
 
 export default function PlacesPage() {
   const { token } = useAuth()
+  const navigate = useNavigate()
   const [places, setPlaces] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -109,7 +111,7 @@ export default function PlacesPage() {
             </thead>
             <tbody>
               {filtered.map(place => (
-                <tr key={place.id}>
+                <tr key={place.id} className="tr-clickable" onClick={() => navigate(`/lugares/${place.id}`)}>
                   <td>
                     <span className="place-name">{place.name}</span>
                   </td>

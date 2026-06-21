@@ -119,6 +119,10 @@
   transition: background 0.1s;
 }
 
+.tr-clickable {
+  cursor: pointer;
+}
+
 .places-table tbody tr:last-child {
   border-bottom: none;
 }

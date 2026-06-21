@@ -1,0 +1,264 @@
+.edit-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Header ──────────────────────────────── */
+
+.edit-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--tc-200);
+  background: #fff;
+  color: var(--tc-700);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s, border-color 0.12s;
+  flex-shrink: 0;
+}
+
+.back-btn:hover {
+  background: var(--tc-50);
+  border-color: var(--tc-500);
+}
+
+.edit-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--tc-900);
+  margin: 0;
+  letter-spacing: -0.2px;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-save {
+  padding: 8px 18px;
+  background: var(--tc-500);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.btn-save:hover:not(:disabled) { background: var(--tc-600); }
+.btn-save:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-delete {
+  padding: 8px 18px;
+  background: #fff;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.btn-delete:hover {
+  background: #fef2f2;
+  border-color: #fca5a5;
+}
+
+/* ── Alerts ──────────────────────────────── */
+
+.alert {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.alert--error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+}
+
+.alert--success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+}
+
+/* ── Grid ────────────────────────────────── */
+
+.edit-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 16px;
+  align-items: start;
+}
+
+.edit-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Card ────────────────────────────────── */
+
+.edit-card {
+  background: #fff;
+  border: 1px solid var(--tc-100);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.card-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--tc-500);
+  margin: 0;
+}
+
+/* ── Form fields ─────────────────────────── */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field--grow { flex: 1; }
+
+.field-row {
+  display: flex;
+  gap: 12px;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.field input,
+.field select {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.12s, box-shadow 0.12s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--tc-500);
+  box-shadow: 0 0 0 3px rgba(221, 97, 59, 0.1);
+}
+
+/* ── Photos ──────────────────────────────── */
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.photo-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  background: #f3f4f6;
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.55);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.photo-item:hover .photo-delete { opacity: 1; }
+
+.photo-upload-btn {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 1.5px dashed var(--tc-200);
+  background: var(--tc-50);
+  color: var(--tc-500);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s, border-color 0.12s;
+  font-size: 22px;
+}
+
+.photo-upload-btn:hover:not(:disabled) {
+  background: var(--tc-100);
+  border-color: var(--tc-500);
+}
+
+.photo-upload-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.file-input { display: none; }
+
+.no-photos {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 0;
+  text-align: center;
+}
+
+/* ── States ──────────────────────────────── */
+
+.state-msg { font-size: 14px; color: #9ca3af; margin: 0; }
+.state-msg--error { color: #ef4444; }
