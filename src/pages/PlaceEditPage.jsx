@@ -132,6 +132,20 @@ export default function PlaceEditPage() {
         <h1 className="edit-title">{place.name}</h1>
 
         <div className="edit-actions">
+          {place.lat && place.lng && (
+            <a
+              className="btn-map"
+              href={`https://www.google.com/maps?q=${place.lat},${place.lng}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+              Ver en mapa
+            </a>
+          )}
           <button className="btn-delete" onClick={handleDelete}>Eliminar</button>
           <button className="btn-save" onClick={handleSave} disabled={saving} form="edit-form">
             {saving ? 'Guardando…' : 'Guardar'}
