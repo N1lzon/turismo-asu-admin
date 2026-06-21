@@ -105,8 +105,6 @@ export default function PlacesPage() {
                 <th>Nombre</th>
                 <th>Categoría</th>
                 <th>Dirección</th>
-                <th>Teléfono</th>
-                <th>Rating</th>
               </tr>
             </thead>
             <tbody>
@@ -127,12 +125,6 @@ export default function PlacesPage() {
                   <td><CategoryBadge category={place.category} /></td>
                   <td className="td-address">
                     {place.address ?? <span className="no-data">—</span>}
-                  </td>
-                  <td className="td-phone">
-                    {place.phone ?? <span className="no-data">—</span>}
-                  </td>
-                  <td>
-                    <StarRating rating={place.rating} total={place.total_ratings} />
                   </td>
                 </tr>
               ))}
