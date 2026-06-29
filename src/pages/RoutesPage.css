@@ -1,0 +1,11 @@
+.route-count {
+  display: inline-block;
+  min-width: 22px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--tc-50);
+  color: var(--tc-600);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}

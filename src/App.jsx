@@ -6,6 +6,10 @@ import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
 import PlacesPage from './pages/PlacesPage'
 import PlaceEditPage from './pages/PlaceEditPage'
+import RoutesPage from './pages/RoutesPage'
+import RouteEditPage from './pages/RouteEditPage'
+import ReportsPage from './pages/ReportsPage'
+import MetricsEditPage from './pages/MetricsEditPage'
 
 export default function App() {
   return (
@@ -23,6 +27,10 @@ export default function App() {
             <Route index element={<DashboardPage />} />
             <Route path="lugares" element={<PlacesPage />} />
             <Route path="lugares/:id" element={<PlaceEditPage />} />
+            <Route path="rutas" element={<RoutesPage />} />
+            <Route path="rutas/:id" element={<RouteEditPage />} />
+            <Route path="reportes" element={<ReportsPage />} />
+            <Route path="reportes/editar-metricas" element={<MetricsEditPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

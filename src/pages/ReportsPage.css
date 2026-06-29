@@ -1,0 +1,257 @@
+.reports-page {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.rp-page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+/* ── Section ─────────────────────────────── */
+
+.rp-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rp-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--tc-500);
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--tc-100);
+}
+
+/* ── Stat card ───────────────────────────── */
+
+.rp-stat {
+  background: #fff;
+  border: 1px solid var(--tc-100);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rp-stat-value {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  word-break: break-word;
+}
+
+.rp-stat-label {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.3;
+}
+
+.rp-stat-sub {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.rp-stat--success .rp-stat-value { color: #16a34a; }
+.rp-stat--warning .rp-stat-value { color: #d97706; }
+
+/* ── Chart card ──────────────────────────── */
+
+.rp-card {
+  background: #fff;
+  border: 1px solid var(--tc-100);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rp-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.rp-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.rp-card-sub {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* ── Grid layouts ────────────────────────── */
+
+.rp-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.rp-grid--3          { grid-template-columns: repeat(3, 1fr); }
+.rp-grid--5          { grid-template-columns: repeat(5, 1fr); }
+.rp-grid--2-1        { grid-template-columns: 2fr 1fr; align-items: start; }
+.rp-grid--stat-chart { grid-template-columns: 190px 1fr; align-items: start; }
+
+/* ── Column (stacked cards) ──────────────── */
+
+.rp-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── HBar list ───────────────────────────── */
+
+.hbar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.hbar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.hbar-rank {
+  font-size: 11px;
+  color: #d1d5db;
+  font-variant-numeric: tabular-nums;
+  width: 16px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.hbar-label {
+  font-size: 13px;
+  color: #374151;
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hbar-track {
+  width: 90px;
+  height: 6px;
+  background: var(--tc-50);
+  border-radius: 3px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.hbar-fill {
+  height: 100%;
+  background: var(--tc-500);
+  border-radius: 3px;
+}
+
+.hbar-value {
+  font-size: 12px;
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+  width: 48px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── Status / error ──────────────────────── */
+
+.rp-status {
+  font-size: 14px;
+  color: #6b7280;
+  text-align: center;
+  padding: 48px;
+  margin: 0;
+}
+
+.rp-status--error { color: #ef4444; }
+
+.rp-no-data {
+  font-size: 13px;
+  color: #9ca3af;
+  text-align: center;
+  padding: 24px;
+  margin: 0;
+}
+
+/* ── Place list (real DB) ────────────────── */
+
+.pl-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pl-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 6px;
+  border-radius: 6px;
+  transition: background 0.1s;
+}
+
+.pl-row:hover {
+  background: #f8fafc;
+}
+
+.pl-rank {
+  font-size: 11px;
+  font-weight: 700;
+  color: #cbd5e1;
+  width: 18px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.pl-name {
+  font-size: 13px;
+  color: #1e293b;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pl-cat {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  text-transform: capitalize;
+}
+
+/* ── Leaflet map ─────────────────────────── */
+
+.rp-leaflet-map {
+  height: 340px;
+  border-radius: 8px;
+  overflow: hidden;
+  /* Leaflet sets z-index internally; keep it below the sticky sidebar */
+  z-index: 0;
+}
+
+.rp-leaflet-map .leaflet-pane,
+.rp-leaflet-map .leaflet-top,
+.rp-leaflet-map .leaflet-bottom {
+  z-index: 10;
+}
