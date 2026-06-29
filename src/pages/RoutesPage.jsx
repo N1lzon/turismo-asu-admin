@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
-import { fetchRoutes } from '../api/routes'
+import { fetchRoutes, createRoute } from '../api/routes'
 import './PlacesPage.css'
 import './RoutesPage.css'
 
@@ -12,6 +12,9 @@ export default function RoutesPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [search, setSearch] = useState('')
+  const [creating, setCreating] = useState(false)
+  const [newName, setNewName] = useState('')
+  const [createError, setCreateError] = useState(null)
 
   useEffect(() => {
     fetchRoutes(token)
@@ -28,6 +31,20 @@ export default function RoutesPage() {
     )
   }, [routes, search])
 
+  async function handleCreate(e) {
+    e.preventDefault()
+    if (!newName.trim()) return
+    setCreateError(null)
+    setCreating(true)
+    try {
+      const { id } = await createRoute(token, { name: newName.trim() })
+      navigate(`/rutas/${id}`)
+    } catch (e) {
+      setCreateError(e.message)
+      setCreating(false)
+    }
+  }
+
   return (
     <div className="places-page">
       <div className="page-header">
@@ -37,6 +54,18 @@ export default function RoutesPage() {
             <p className="page-subtitle">{filtered.length} de {routes.length} registros</p>
           )}
         </div>
+        <form className="create-form" onSubmit={handleCreate}>
+          <input
+            className="create-input"
+            placeholder="Nombre de nueva ruta…"
+            value={newName}
+            onChange={e => { setNewName(e.target.value); setCreateError(null) }}
+          />
+          <button className="btn-create" type="submit" disabled={creating || !newName.trim()}>
+            {creating ? '…' : 'Nueva ruta'}
+          </button>
+          {createError && <span className="create-error">{createError}</span>}
+        </form>
       </div>
 
       <div className="toolbar">
@@ -69,15 +98,26 @@ export default function RoutesPage() {
               <tr>
                 <th>Nombre</th>
                 <th>Descripción</th>
+                <th>Hora inicio</th>
                 <th>Lugares</th>
               </tr>
             </thead>
             <tbody>
               {filtered.map(route => (
                 <tr key={route.id} className="tr-clickable" onClick={() => navigate(`/rutas/${route.id}`)}>
-                  <td><span className="place-name">{route.name}</span></td>
+                  <td>
+                    <div className="route-name-cell">
+                      <span className="place-name">{route.name}</span>
+                      {route.is_preset && <span className="badge badge--preset">Predefinida</span>}
+                    </div>
+                  </td>
                   <td className="td-address">
                     {route.description ?? <span className="no-data">—</span>}
+                  </td>
+                  <td className="td-phone">
+                    {route.start_time
+                      ? route.start_time.slice(0, 5)
+                      : <span className="no-data">—</span>}
                   </td>
                   <td>
                     {route.places?.length != null

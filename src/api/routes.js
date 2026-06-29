@@ -27,3 +27,10 @@ export const updateRoute = (token, id, body) =>
 
 export const deleteRoute = (token, id) =>
   req(`/admin/routes/${id}`, token, { method: 'DELETE' })
+
+export const createRoute = (token, body) =>
+  req('/admin/routes', token, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  })

@@ -1,0 +1,151 @@
+.lmap-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lmap-hint {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.lmap-container {
+  height: 380px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.lmap-empty {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* ── Popup ───────────────────────────────── */
+
+.lmap-popup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 130px;
+}
+
+.lmap-popup-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.lmap-popup-coord {
+  font-size: 11px;
+  color: #64748b;
+  font-family: monospace;
+}
+
+.lmap-popup-remove {
+  margin-top: 2px;
+  padding: 5px 10px;
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.lmap-popup-remove:hover {
+  background: #fee2e2;
+}
+
+/* ── Table ───────────────────────────────── */
+
+.lmap-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.lmap-table thead th {
+  background: #f8fafc;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.lmap-table tbody tr {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.lmap-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.lmap-table td {
+  padding: 7px 12px;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.lmap-td-n {
+  color: #94a3b8;
+  font-weight: 600;
+  width: 32px;
+}
+
+.lmap-td-coord {
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+  color: #475569;
+}
+
+.lmap-weight-input {
+  width: 90px;
+  padding: 4px 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #1e293b;
+  background: #f8fafc;
+  outline: none;
+  transition: border-color 0.12s;
+}
+
+.lmap-weight-input:focus {
+  border-color: var(--tc-500);
+  background: #fff;
+}
+
+.lmap-remove-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.12s, color 0.12s;
+}
+
+.lmap-remove-btn:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}

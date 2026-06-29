@@ -1,6 +1,7 @@
 import { Fragment, useState, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { fetchMetrics, updateMetrics } from '../api/metrics'
+import LocationsMap from '../components/LocationsMap'
 import './MetricsEditPage.css'
 
 const CATS = ['gastronomia', 'hoteles', 'lugares']
@@ -269,11 +270,10 @@ export default function MetricsEditPage() {
               />
             </Field>
 
-            <Field label="Ubicaciones de usuarios" hint="array · { lat, lng, weight }" wide>
-              <textarea
-                className="me-textarea me-textarea--sm"
+            <Field label="Mapa de ubicaciones de usuarios" hint="{ lat, lng, weight }" wide>
+              <LocationsMap
                 value={trafico.ubicaciones}
-                onChange={e => setTrafico(s => ({ ...s, ubicaciones: e.target.value }))}
+                onChange={v => setTrafico(s => ({ ...s, ubicaciones: v }))}
               />
             </Field>
           </Section>

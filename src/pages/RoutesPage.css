@@ -9,3 +9,65 @@
   font-weight: 600;
   text-align: center;
 }
+
+/* ── Preset badge ────────────────────────── */
+
+.badge--preset {
+  background: #EDE9FE;
+  color: #6D28D9;
+}
+
+.route-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Create form ─────────────────────────── */
+
+.create-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.create-input {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  width: 220px;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+
+.create-input:focus {
+  border-color: var(--tc-500);
+  box-shadow: 0 0 0 3px rgba(221, 97, 59, 0.1);
+}
+
+.btn-create {
+  padding: 8px 16px;
+  background: var(--tc-500);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.12s;
+}
+
+.btn-create:hover:not(:disabled) { background: var(--tc-600); }
+.btn-create:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.create-error {
+  font-size: 13px;
+  color: #dc2626;
+}
