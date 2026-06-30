@@ -42,6 +42,11 @@
   letter-spacing: -0.2px;
 }
 
+.sidebar-brand-logo {
+  height: 26px;
+  width: auto;
+}
+
 /* ── Nav items ───────────────────────────── */
 
 .nav-list {

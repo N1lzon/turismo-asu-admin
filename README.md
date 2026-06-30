@@ -1,16 +1,64 @@
-# React + Vite
+# Jahapa — Admin Panel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Panel administrativo (React + Vite) para gestionar los datos de la plataforma de turismo de Asunción. Consume una API backend en FastAPI/PostgreSQL+PostGIS.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19 + Vite
+- react-router-dom
+- react-leaflet / Leaflet (mapas)
+- CSS plano (sin framework), un archivo por página/componente
+- Backend: FastAPI, PostgreSQL + PostGIS (proyecto separado)
 
-## React Compiler
+## Funcionalidades
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Login** — autenticación JWT (Bearer, expiración 8h)
+- **Lugares** — listado, alta, edición y eliminación de lugares (gastronomía, hoteles, atractivos turísticos), incluyendo gestión de fotos y ubicación en mapa
+- **Rutas** — gestión de rutas turísticas y los lugares que las componen
+- **Reportes** — visualización de métricas de uso de la plataforma, con mapa de ubicaciones
 
-## Expanding the ESLint configuration
+## Requisitos
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Node.js 22+
+- Backend de Turismo ASU corriendo (ver `VITE_API_URL`)
+
+## Configuración
+
+Copiar `.env.example` a `.env` y ajustar la URL del backend:
+
+```
+VITE_API_URL=http://localhost:8000
+```
+
+## Desarrollo
+
+```bash
+npm install
+npm run dev
+```
+
+La app queda disponible en `http://localhost:5173`.
+
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Docker
+
+El proyecto incluye un `Dockerfile` multi-stage que compila la app y la sirve con nginx:
+
+```bash
+docker build -t jahapa-admin .
+docker run -p 80:80 jahapa-admin
+```
+
+`VITE_API_URL` debe configurarse en tiempo de build (la app es estática una vez compilada).
+
+## Lint
+
+```bash
+npm run lint
+```

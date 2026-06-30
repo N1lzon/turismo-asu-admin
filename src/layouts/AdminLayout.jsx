@@ -1,5 +1,6 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import jahapaLogo from '../assets/jahapa-logo.png'
 import './AdminLayout.css'
 
 const navItems = [
@@ -76,11 +77,8 @@ export default function AdminLayout() {
     <div className="admin-shell">
       <nav className="sidebar">
         <div className="sidebar-brand">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-            <circle cx="12" cy="9" r="2.5" />
-          </svg>
-          Turismo ASU
+          <img src={jahapaLogo} alt="" className="sidebar-brand-logo" />
+          Jahapa
         </div>
 
         <ul className="nav-list">

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { loginRequest } from '../api/auth'
+import jahapaLogo from '../assets/jahapa-logo.png'
 import './LoginPage.css'
 
 export default function LoginPage() {
@@ -32,12 +33,9 @@ export default function LoginPage() {
       <div className="login-card">
         <div className="login-header">
           <div className="login-logo">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="20" cy="20" r="20" fill="#1d4ed8" />
-              <path d="M20 8C15.03 8 11 12.03 11 17c0 6.75 9 17 9 17s9-10.25 9-17c0-4.97-4.03-9-9-9zm0 12.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" fill="white" />
-            </svg>
+            <img src={jahapaLogo} alt="Jahapa" className="login-logo-img" />
           </div>
-          <h1 className="login-title">Turismo ASU</h1>
+          <h1 className="login-title">Jahapa</h1>
           <p className="login-subtitle">Panel de Administración</p>
         </div>
 
