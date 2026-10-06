@@ -1,0 +1,126 @@
+.tp-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Header ──────────────────────────────── */
+
+.tp-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--tc-900);
+  margin: 0 0 2px;
+  letter-spacing: -0.3px;
+}
+
+.tp-subtitle {
+  font-size: 13px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* ── Map ─────────────────────────────────── */
+
+.tp-map-container {
+  height: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--tc-100);
+}
+
+/* ── States ──────────────────────────────── */
+
+.tp-state-msg {
+  font-size: 14px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.tp-state-msg--error {
+  color: #ef4444;
+}
+
+.tp-results-count {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ── Table ───────────────────────────────── */
+
+.tp-table-wrapper {
+  background: #fff;
+  border: 1px solid var(--tc-100);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tp-table thead th {
+  background: #fafafa;
+  padding: 11px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid var(--tc-100);
+  white-space: nowrap;
+}
+
+.tp-table tbody tr {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.tp-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tp-table td {
+  padding: 12px 16px;
+  color: #374151;
+  vertical-align: middle;
+}
+
+.tp-place-name {
+  font-weight: 500;
+  color: #111827;
+}
+
+.tp-td-dist {
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+/* ── Category badges ─────────────────────── */
+
+.tp-badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tp-badge--gastro {
+  background: #FEF3C7;
+  color: #B45309;
+}
+
+.tp-badge--hotel {
+  background: #DBEAFE;
+  color: #1D4ED8;
+}
+
+.tp-badge--lugar {
+  background: #D1FAE5;
+  color: #065F46;
+}

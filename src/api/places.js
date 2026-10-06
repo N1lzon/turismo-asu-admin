@@ -40,3 +40,13 @@ export const deletePhoto = (token, id, url) =>
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ url }),
   })
+
+export const fetchNearbyPlaces = async (lat, lng, radius) => {
+  const params = new URLSearchParams({ lat, lng, radius })
+  const res = await fetch(`${API_URL}/places/nearby?${params}`)
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}))
+    throw new Error(err.detail || `HTTP ${res.status}`)
+  }
+  return res.json()
+}

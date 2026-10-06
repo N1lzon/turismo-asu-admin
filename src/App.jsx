@@ -10,6 +10,7 @@ import RoutesPage from './pages/RoutesPage'
 import RouteEditPage from './pages/RouteEditPage'
 import ReportsPage from './pages/ReportsPage'
 import MetricsEditPage from './pages/MetricsEditPage'
+import TestPage from './pages/TestPage'
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
             <Route path="rutas/:id" element={<RouteEditPage />} />
             <Route path="reportes" element={<ReportsPage />} />
             <Route path="reportes/editar-metricas" element={<MetricsEditPage />} />
+            <Route path="pruebas" element={<TestPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
