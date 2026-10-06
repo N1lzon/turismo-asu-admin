@@ -20,6 +20,30 @@
   margin: 0;
 }
 
+/* ── Radius slider ───────────────────────── */
+
+.tp-radius-control {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 420px;
+}
+
+.tp-radius-control label {
+  font-size: 13px;
+  color: #374151;
+}
+
+.tp-radius-control strong {
+  color: var(--tc-600);
+}
+
+.tp-radius-control input[type="range"] {
+  width: 100%;
+  accent-color: var(--tc-500);
+  cursor: pointer;
+}
+
 /* ── Map ─────────────────────────────────── */
 
 .tp-map-container {
@@ -79,6 +103,15 @@
   border-bottom: 1px solid #f3f4f6;
 }
 
+.tp-row-clickable {
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.tp-row-clickable:hover {
+  background: var(--tc-50);
+}
+
 .tp-table tbody tr:last-child {
   border-bottom: none;
 }
@@ -123,4 +156,37 @@
 .tp-badge--lugar {
   background: #D1FAE5;
   color: #065F46;
+}
+
+/* ── Popup ───────────────────────────────── */
+
+.tp-popup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 120px;
+  font-size: 13px;
+}
+
+.tp-popup span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.tp-popup-edit {
+  margin-top: 2px;
+  padding: 5px 10px;
+  background: var(--tc-50);
+  color: var(--tc-600);
+  border: 1px solid var(--tc-100);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.tp-popup-edit:hover {
+  background: var(--tc-100);
 }

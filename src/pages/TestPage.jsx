@@ -1,11 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { MapContainer, TileLayer, CircleMarker, Circle, Popup, useMapEvents } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { fetchNearbyPlaces } from '../api/places'
+import PlaceEditModal from './PlaceEditModal'
 import './TestPage.css'
 
 const ASU_CENTER = [-25.2867, -57.6473]
-const RADIUS_M = 500
+const DEFAULT_RADIUS_M = 500
+const MIN_RADIUS_M = 100
+const MAX_RADIUS_M = 3000
 
 const CATEGORY_META = {
   gastronomia: { label: 'Gastronomía', className: 'tp-badge--gastro' },
@@ -29,18 +32,33 @@ function ClickHandler({ onPick }) {
 
 export default function TestPage() {
   const [point, setPoint] = useState(null)
+  const [radius, setRadius] = useState(DEFAULT_RADIUS_M)
   const [places, setPlaces] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [editingId, setEditingId] = useState(null)
 
-  function handlePick(lat, lng) {
-    setPoint({ lat, lng })
+  const loadNearby = useCallback((lat, lng, r) => {
     setLoading(true)
     setError(null)
-    fetchNearbyPlaces(lat, lng, RADIUS_M)
+    fetchNearbyPlaces(lat, lng, r)
       .then(setPlaces)
       .catch(e => setError(e.message))
       .finally(() => setLoading(false))
+  }, [])
+
+  useEffect(() => {
+    if (!point) return
+    const t = setTimeout(() => loadNearby(point.lat, point.lng, radius), 300)
+    return () => clearTimeout(t)
+  }, [point, radius, loadNearby])
+
+  function handlePick(lat, lng) {
+    setPoint({ lat, lng })
+  }
+
+  function refresh() {
+    if (point) loadNearby(point.lat, point.lng, radius)
   }
 
   return (
@@ -48,8 +66,23 @@ export default function TestPage() {
       <div className="tp-header">
         <h1 className="tp-title">Pruebas</h1>
         <p className="tp-subtitle">
-          Hacé clic en el mapa para buscar lugares en un radio de {RADIUS_M} m
+          Hacé clic en el mapa para buscar lugares cercanos al punto
         </p>
+      </div>
+
+      <div className="tp-radius-control">
+        <label htmlFor="tp-radius-slider">
+          Radio de búsqueda: <strong>{radius} m</strong>
+        </label>
+        <input
+          id="tp-radius-slider"
+          type="range"
+          min={MIN_RADIUS_M}
+          max={MAX_RADIUS_M}
+          step="50"
+          value={radius}
+          onChange={e => setRadius(Number(e.target.value))}
+        />
       </div>
 
       <div className="tp-map-container">
@@ -64,7 +97,7 @@ export default function TestPage() {
             <>
               <Circle
                 center={[point.lat, point.lng]}
-                radius={RADIUS_M}
+                radius={radius}
                 pathOptions={{ color: '#DD613B', fillColor: '#DD613B', fillOpacity: 0.08, weight: 1.5 }}
               />
               <CircleMarker
@@ -88,8 +121,13 @@ export default function TestPage() {
               pathOptions={{ color: '#1D4ED8', fillColor: '#60A5FA', fillOpacity: 0.85, weight: 1.5 }}
             >
               <Popup>
-                <strong>{p.name}</strong><br />
-                {Math.round(p.distance_meters)} m
+                <div className="tp-popup">
+                  <strong>{p.name}</strong>
+                  <span>{Math.round(p.distance_meters)} m</span>
+                  <button className="tp-popup-edit" onClick={() => setEditingId(p.id)}>
+                    Editar
+                  </button>
+                </div>
               </Popup>
             </CircleMarker>
           ))}
@@ -103,7 +141,7 @@ export default function TestPage() {
       {point && !loading && !error && (
         <>
           <p className="tp-results-count">
-            {places.length} lugar{places.length === 1 ? '' : 'es'} dentro de {RADIUS_M} m
+            {places.length} lugar{places.length === 1 ? '' : 'es'} dentro de {radius} m
           </p>
 
           {places.length > 0 && (
@@ -118,7 +156,7 @@ export default function TestPage() {
                 </thead>
                 <tbody>
                   {places.map(p => (
-                    <tr key={p.id}>
+                    <tr key={p.id} className="tp-row-clickable" onClick={() => setEditingId(p.id)}>
                       <td><span className="tp-place-name">{p.name}</span></td>
                       <td><CategoryBadge category={p.category} /></td>
                       <td className="tp-td-dist">{Math.round(p.distance_meters)} m</td>
@@ -129,6 +167,15 @@ export default function TestPage() {
             </div>
           )}
         </>
+      )}
+
+      {editingId != null && (
+        <PlaceEditModal
+          id={editingId}
+          onClose={() => setEditingId(null)}
+          onSaved={refresh}
+          onDeleted={refresh}
+        />
       )}
     </div>
   )
